@@ -22,7 +22,11 @@ def scrape_urls(root, file_path):
         progress_bar = tqdm(urls, desc="Scraping Progress", colour="green")
         # Looping through each url
         for url in progress_bar:
-            driver.get(url)
+            try:
+                driver.get(url)
+            except:
+                print(f"Invalid url: {url}")
+                continue
             progress_bar = tqdm(urls)
             # Wait for the important elements to load
             wait = WebDriverWait(driver, 2)
