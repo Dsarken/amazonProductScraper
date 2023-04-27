@@ -1,0 +1,11 @@
+Amazon Web Scraper:
+
+Basic design info:
+1. Will scrape product information of the following: Name, price, rating, reviews from a given product.
+2. User will pick a csv file and then the browser will go to each page and scrape each URL and will store scraped information in another csv file.
+3. Process will finish and will go back to main GUI application window, in case the user wishes to scrape another collection of URLs.	
+
+GUI Design:
+
+1. Will consist of a simple button and some padding allowing a user to choose a csv file from any directory.
+ 
