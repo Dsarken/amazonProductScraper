@@ -79,7 +79,7 @@ def scrape_urls(root, file_path):
 
             try:
                 product_num_stars = driver.find_element(
-                    By.XPATH, '//*[@id="reviewsMedley"]/div/div[1]/span[1]/span/div[2]/div/div[2]/div/span/span').text
+                    By.XPATH, '//*[@id="acrPopover"]/span[1]/a/span').text + '/5 stars'
             except NoSuchElementException:
                 # If number of stars is not found, print a warning message
                 print(f'Number of Stars not found for {url}')
