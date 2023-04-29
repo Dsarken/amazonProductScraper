@@ -1,6 +1,6 @@
 # Amazon Product Info Web Scraper
 
-This is a Python script that scrapes product information from Amazon.com using BeautifulSoup and requests libraries. It can extract the following data for any product:
+This is a Python script that scrapes product information from Amazon.com using Selenium and requests libraries. It can extract the following data for any product:
 
 - Title
 - Price
@@ -16,6 +16,7 @@ To run this script, you need to have Python 3 installed on your system. You also
 - Selenium: `pip install selenium`
 - Tqdm: `pip install tqdm`
 - You can alternatively install the requirements.txt file containing all three packages: `pip install requirements.txt`
+
 ## Usage
 
 To use this script, you need to provide a valid csv file containing Amazon Product Page URLs.
