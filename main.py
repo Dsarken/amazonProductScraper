@@ -8,6 +8,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def scrape_urls(root, file_path):
@@ -31,8 +33,8 @@ def scrape_urls(root, file_path):
             # Wait for the important elements to load
             wait = WebDriverWait(driver, 2)
             try:
-                product_title = driver.find_element(
-                    By.CSS_SELECTOR, '#productTitle').text
+                product_title = WebDriverWait(driver, 2).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, '#productTitle'))).text
             except TimeoutException:
                 product_title = 'No Title'  # Assign no title if the title is not found
 
@@ -84,13 +86,12 @@ def scrape_urls(root, file_path):
                 # If number of stars is not found, print a warning message
                 print(f'Number of Stars not found for {url}')
                 product_num_stars = ''
-
             # Append the product info to the results list
             results.append({
                 'Product Title': product_title,
                 'Product Price': product_price,
                 'Number of Ratings': product_rating,
-                'Number of Stars': product_num_stars
+                'Number of Stars': product_num_stars,
             })
             progress_bar.update(1)
         progress_bar.close()
