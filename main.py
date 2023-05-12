@@ -86,12 +86,21 @@ def scrape_urls(root, file_path):
                 # If number of stars is not found, print a warning message
                 print(f'Number of Stars not found for {url}')
                 product_num_stars = ''
+
+            try:
+                product_image = driver.find_element(
+                    By.CSS_SELECTOR, '#landingImage').get_attribute('src')
+            except NoSuchElementException:
+                # If image is not found, print a warning message
+                print(f'Image not found for {url}')
+                product_image = ''
             # Append the product info to the results list
             results.append({
                 'Product Title': product_title,
                 'Product Price': product_price,
                 'Number of Ratings': product_rating,
                 'Number of Stars': product_num_stars,
+                'Product Image': product_image,
             })
             progress_bar.update(1)
         progress_bar.close()
